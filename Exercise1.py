@@ -6,7 +6,7 @@ regex = re.compile(r"[\w']+")
 
 class MRWordFreqCount(MRJob):
 
-   #For every word in each line we create (horse, 1), the word and count 1
+   # For every word in each line we create (horse, 1), the word and count 1
    def mapper(self, _, line):
        for word in regex.findall(line):
            yield word.lower(), 1
@@ -16,4 +16,5 @@ class MRWordFreqCount(MRJob):
        yield word, sum(counts)
 
 if __name__ == '__main__':
+    
    MRWordFreqCount.run()
